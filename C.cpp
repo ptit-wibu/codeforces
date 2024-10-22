@@ -9,29 +9,19 @@ int32_t main()
 	int t; cin>>t;
 	while(t--)
 	{
-		int n; cin>>n;
-		int cnt = 0;
-		vector<int> seq;
-		vector<int> bitpos;
-		for(int i = 0; i<61; i++)
+		int n,m,k;
+		cin>>n>>m>>k;
+		int a[n+1];
+		for(int i = 1; i<=n; i++)
 		{
-			if(n &((long long)1 << i))
-			{
-				cout<<(1<<i)<<endl;
-				bitpos.push_back((long long)1 << i);//dua bit 1 vao vi auto bang 1 neu or
-				//bitpos tuong trung cho so he 10 cua he nhi phan
-				cnt++;
-			}
+			a[i] = i;
 		}
-		cnt++;
-		seq.push_back(n);
-		for(auto x:bitpos)
+		int x = lower_bound(a+1, a+n+1, m) - a;
+		for(int i = n; i>x; i--)
 		{
-			//cout<<x<<endl;
-			if(n > x) seq.push_back(n-x);
+			cout<<a[i]<<" ";
 		}
-		cout<<seq.size()<<endl;
-		for(int i = seq.size() - 1; i>=0;i--) cout<<seq[i]<<" ";
+		for(int i = 1;i<=x; i++) cout<<a[i]<<" ";
 		cout<<endl;
 	}
 }
